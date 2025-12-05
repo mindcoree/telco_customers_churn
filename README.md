@@ -232,7 +232,8 @@ Machine Learning Project | Telco Customer Churn Analysis
 ## 📄 Лицензия
 Проект для образовательных целей. Данные: IBM Sample Data Sets.
 
-(kaggle/telco-customer-churn)[https://www.kaggle.com/datasets/blastchar/telco-customer-churn/]
+Dataset used for this project: [Telco Customer Churn Dataset](https://www.kaggle.com/datasets/blastchar/telco-customer-churn/)
+
 ---
 
 **Статус проекта:** ✅ Complete | **Лучшая модель:** AdaBoost | **Recall:** 81.5%
