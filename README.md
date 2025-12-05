@@ -76,7 +76,7 @@ telco_customer_churn/
 - Расширенный датасет: 28 признаков (+47% признаков)
 - Улучшение разделимости классов (визуализация PCA, t-SNE)
 
-### 3️⃣ Моделирование (03_Modeling_v2.ipynb)
+### 3️⃣ Моделирование (03_Modeling.ipynb)
 **Эксперименты: 48 конфигураций**
 
 #### Стратегии данных:
@@ -120,14 +120,13 @@ telco_customer_churn/
 
 | Rank | Модель | Данные | Стратегия | Recall | F1-Score | Precision | ROC-AUC |
 |------|--------|--------|-----------|--------|----------|-----------|---------|
-| 🥇 | **AdaBoost** | Enhanced | SMOTENC | **79.1%** | 0.643 | 0.544 | 0.802 |
+| 🥇 | **AdaBoost** | Enhanced | SMOTENC | **81.50%** | 0.646 | 0.535 | 0.853 |
 | 🥈 | LightGBM | Enhanced | SMOTENC | **78.2%** | 0.636 | 0.538 | 0.800 |
-| 🥉 | Logistic Regression | Base | Simple | 60.4% | 0.640 | 0.719 | 0.854 |
+| 🥉 | Logistic Regression | Base | Simple | **60.4%**| 0.640 | 0.719 | 0.854 |
 
 ### Ключевые выводы:
 ✅ **AdaBoost (Enhanced + SMOTENC)** — победитель:
-- **Минимум False Negatives** (пропустит только 20.9% churners)
-- Улучшение Recall на +31% vs baseline Logistic Regression
+- **Минимум False Negatives** (пропустит только 18.5% churners)
 - Эффект feature engineering: +2.5% Recall vs Base данных
 
 ✅ **Feature Engineering работает:**
@@ -176,19 +175,19 @@ high_risk_customers = probabilities > 0.35
 ### Параметры финальной модели:
 ```python
 AdaBoostClassifier(
-    learning_rate=0.1,
-    n_estimators=100,
-    random_state=42
+    n_estimators=1877,
+    learning_rate=0.02,
+    random_state=101,
+    algorithm='SAMME'
 )
 ```
 
 **Метрики финальной модели:**
 - Accuracy: 76.3%
-- Precision: 54.4%
-- **Recall: 79.1%** ← приоритет
-- F1-Score: 0.643
-- ROC-AUC: 0.802
-
+- Precision: 53.5%
+- **Recall: 81.5%** ← приоритет
+- F1-Score: 0.646
+- ROC-AUC: 0.853
 ## 📦 Зависимости
 
 ```bash
@@ -233,6 +232,7 @@ Machine Learning Project | Telco Customer Churn Analysis
 ## 📄 Лицензия
 Проект для образовательных целей. Данные: IBM Sample Data Sets.
 
+(kaggle/telco-customer-churn)[https://www.kaggle.com/datasets/blastchar/telco-customer-churn/]
 ---
 
-**Статус проекта:** ✅ Complete | **Лучшая модель:** AdaBoost | **Recall:** 79.1%
+**Статус проекта:** ✅ Complete | **Лучшая модель:** AdaBoost | **Recall:** 81.5%
